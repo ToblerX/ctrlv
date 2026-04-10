@@ -160,6 +160,56 @@ Exceeding the limit returns `429 Too Many Requests`:
 └── .env.example                 # Environment variables template
 ```
 
+## Server Deployment
+
+### 1. Generate a deploy key on your server
+
+```bash
+ssh-keygen -t ed25519 -C "ctrlv-deploy" -f ~/.ssh/ctrlv_deploy
+```
+
+Press Enter twice (no passphrase needed for automated deploys).
+
+### 2. Add the public key to GitHub
+
+Copy the public key:
+
+```bash
+cat ~/.ssh/ctrlv_deploy.pub
+```
+
+Then go to your repo **Settings > Deploy keys > Add deploy key**, paste the key, and give it a title (e.g. "My Server"). Leave "Allow write access" unchecked (read-only is enough).
+
+### 3. Configure SSH to use the deploy key
+
+```bash
+cat >> ~/.ssh/config << 'EOF'
+Host github-ctrlv
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/ctrlv_deploy
+    IdentitiesOnly yes
+EOF
+```
+
+### 4. Clone and run
+
+```bash
+git clone git@github-ctrlv:ToblerX/ctrlv.git
+cd ctrlv
+cp .env.example .env
+nano .env   # set your BOT_TOKEN
+docker compose up -d --build
+```
+
+### 5. Update the app
+
+```bash
+cd ctrlv
+git pull
+docker compose up -d --build
+```
+
 ## License
 
 See [LICENSE](LICENSE).
