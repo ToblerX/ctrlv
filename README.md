@@ -1,6 +1,6 @@
 # Ctrl-V Game Card API
 
-A free, self-contained API for generating game cards for the Ukrainian party game **"Ctrl V"** (inspired by the YouTube show [КтрлВе](https://www.youtube.com/@ctrlve)).
+A free, self-contained API for generating game cards for the Ukrainian party game **"Ctrl V"** (inspired by the YouTube show [КтрлВе](https://www.youtube.com/watch?v=O5eSviXCWT0)).
 
 The API returns a randomized **game mode**, a **topic prompt** in Ukrainian, and **3 secret Ukrainian nouns** that a player must weave into their improvisation.
 
