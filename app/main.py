@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from app.routers.game_card import router as game_card_router
+from app.routers.rules import router as rules_router
 
 app = FastAPI(
     title="Ctrl-V Game Card API",
@@ -9,6 +10,7 @@ app = FastAPI(
 )
 
 app.include_router(game_card_router)
+app.include_router(rules_router)
 
 
 @app.get("/", tags=["Root"])
