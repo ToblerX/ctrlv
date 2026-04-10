@@ -1,2 +1,5 @@
 fastapi
 uvicorn[standard]
+slowapi
+aiogram>=3.0
+aiohttp
